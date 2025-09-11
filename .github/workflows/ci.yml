@@ -43,3 +43,13 @@ jobs:
       - name: Code Linting
         run: staticcheck ./...
 
+  Tests:
+    name: Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+      
+      - name: Sec check
+        run: gosec ./...
